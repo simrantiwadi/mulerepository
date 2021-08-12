@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="75a35937-73d7-4b52-94be-3d315d37e72b" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:listener-config name="HTTP_Listener_config1" doc:name="HTTP Listener config" doc:id="49bd78c5-e308-4f52-a7b0-2077a76ca815" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="muleappFlow" doc:id="bca53f48-493d-4bfb-a466-313f9fb27c4e" >
+		<http:listener doc:name="Listener" doc:id="b5c9c219-c090-4d0f-af33-7c56055d676f" config-ref="HTTP_Listener_config1" path="/flights"/>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="24432f1b-e1c3-4de2-8792-ef302038620d" />
+	</flow>
+</mule>
